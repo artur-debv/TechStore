@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Altura da tela inteira para centralizar verticalmente */
+    background-color: #ffffff;
+    padding: 2rem;
+}
+
+.Container_information {
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-right: 2rem;
+}
+
+.title_NameStore {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+
+.paragraphDDescription {
+    font-size: 30px;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.ButtonseeMore {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ButtonseeMore:hover {
+    background-color: #333333;
+}
+
+.container_image_pc {
+    text-align: center; /* Centraliza a imagem */
+}
+
+.image_pc {
+    height: 500px; /* Ajuste do tamanho da imagem */
+}
