@@ -2,34 +2,42 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../services/FirebaseConfig";
 import styles from '../css/Register.module.css';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom"; // Importando useNavigate para redirecionamento após cadastro
 
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-   
+    const [error, setError] = useState(null); // Estado para erro
+    const [successMessage, setSuccessMessage] = useState(""); // Estado para mensagem de sucesso
 
     const [createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate(); // Hook para navegação
 
     const handleSignUp = async (event) => {
         event.preventDefault();
         setError(null);
         setSuccessMessage("");
 
+        // Verifica se a senha tem pelo menos 6 caracteres
         if (password.length < 6) {
             setError("A senha deve ter pelo menos 6 caracteres.");
             return;
         }
 
+        // Tenta criar o usuário com email e senha
         await createUserWithEmailAndPassword(email, password);
     };
 
     useEffect(() => {
         if (user) {
-            setSuccessMessage("Cadastro realizado com sucesso!");
+            setSuccessMessage("Cadastro realizado com sucesso!"); // Mensagem de sucesso
+
+            // Redireciona para a página de login após o cadastro bem-sucedido
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000); // Tempo para mostrar a mensagem antes de redirecionar
         }
-    }, [user]);
+    }, [user, navigate]);
 
     useEffect(() => {
         if (hookError) {
@@ -66,19 +74,14 @@ function Register() {
                     />
 
                     <button type="submit" className={styles.button}>Cadastrar</button>
-                    <p>já possui uma conta ? <Link to="/login">Fazer Login</Link></p>
+                    <p>Já possui uma conta? <Link to="/login">Fazer Login</Link></p>
                 </form>
 
                 {loading && <p>Carregando...</p>}
-                {error && <p className={styles.error}>Erro: {error}</p>}
-                {successMessage && <p className={styles.success}>{successMessage}</p>}
+                {error && <p className={styles.error}>Erro: {error}</p>} {/* Exibe erro */}
+                {successMessage && <p className={styles.success}>{successMessage}</p>} {/* Exibe sucesso */}
             </div>
-
-
         </div>
-
-
-
     );
 }
 
