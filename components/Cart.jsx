@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../css/title.module.css';
+import styles from '../css/Title.module.css';
 import { Trash2, MinusCircle, PlusCircle } from 'lucide-react';
 import { useCart } from '../components/Context/CartContext';
 
