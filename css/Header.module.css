@@ -50,6 +50,12 @@
   font-weight: bold;
 }
 
+.link{
+  color: white;
+  text-decoration: none;
+}
+
+
 .login{
   margin-bottom: 0px;
 }
