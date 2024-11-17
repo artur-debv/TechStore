@@ -7,10 +7,12 @@ function Header() {
 
   return (
     <header className={styles.header}>
-        <div className={styles.container}> 
+      <div className={styles.container}>
         <h1 className={styles.title_total}>Total: ${total.toFixed(2)}</h1>
-        </div>
+        <p className={styles.login}>Fazer login</p>
+      </div>
     </header>
+
   );
 }
 
