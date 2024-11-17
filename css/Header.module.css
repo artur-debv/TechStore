@@ -55,8 +55,18 @@
   text-decoration: none;
 }
 
+p{
+  margin-bottom: 0px;
+}
+
+.userContainer{
+  display: flex;
+  gap: 10px;
+}
 
 .login{
   margin-bottom: 0px;
+  color: white;
+  text-decoration: none;
 }
 

@@ -13,6 +13,8 @@ function Register() {
     const [createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate(); // Hook para navegação
 
+    console.log(user)
+
     const handleSignUp = async (event) => {
         event.preventDefault();
         setError(null);
