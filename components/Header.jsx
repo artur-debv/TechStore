@@ -1,37 +1,11 @@
 import { useCart } from '../components/Context/CartContext';
 import { Link } from 'react-router-dom';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { useEffect } from 'react';
-
-import styles from '../css/Header.module.css'
-import { useState } from 'react';
-
+import { useAuth } from './UseraUthentication/UserAuhentication';
+import styles from '../css/Header.module.css';
 
 function Header() {
-  const [user, setUser] = useState(null);
-  const auth = getAuth();
   const { total } = useCart();
-
-  useEffect(() => {
-    // Verifica se há um usuário logado
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe(); // Limpeza do listener
-  }, [auth]);
-
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => setUser(null))
-      .catch((error) => console.error("Erro ao sair:", error));
-  };
-
-  const extractNameFromEmail = (email) => {
-    if (!email) return "Usuário";
-    const match = email.match(/^[a-zA-Z]+/); // Captura apenas as letras no início
-    return match ? match[0] : "Usuário"; // Retorna o nome ou "Usuário" caso não encontre
-  };
+  const { user, handleLogout, extractNameFromEmail } = useAuth();
 
   return (
     <header className={styles.header}>
