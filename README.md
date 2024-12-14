@@ -2,8 +2,6 @@
 <p>O projeto Consiste e um site para vendas de Periféricos</p>
 
 
-
-
 <h1>Stacks</h1>
 <p>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge" />
