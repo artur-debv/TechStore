@@ -10,6 +10,11 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
         return
     }
     try {
+        if(items.length === 0) {
+            alert("Seu carrinho está vazio")
+            setLoading(false)
+            return
+        }
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
                 name: item.name,
