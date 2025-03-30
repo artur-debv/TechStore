@@ -8,8 +8,6 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
         alert("Você precisa estar logado para finalizar a compra")
         setLoading(false)
         return
-    } else {
-        alert("Você já está logado")
     }
     try {
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
