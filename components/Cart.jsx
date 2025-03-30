@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity } = useCart();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState()
   const isEmpty = cart.length === 0;
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -54,7 +54,7 @@ function Cart() {
         </div>
         <button
           onClick={() => {
-            handleCheckout(cart);
+            handleCheckout(cart, setLoading);
           }}
           className={styles.checkout_button}
         >

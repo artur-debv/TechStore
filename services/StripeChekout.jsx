@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-const handleCheckout = async (cart, setLoading) => { // <- Apenas cart, sem destructuring
 
-    setLoading(true); // <- Corrigido para setLoading
-
-    loading(true); // <- Corrigido para loading
+const handleCheckout = async (cart,setLoading) => { // <- Apenas cart, sem destructuring
     console.log("Iniciando checkout com os itens:", cart); // Adicionei um log para verificar os itens do carrinho
+    setLoading(true)
     try {
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
@@ -28,7 +26,7 @@ const handleCheckout = async (cart, setLoading) => { // <- Apenas cart, sem dest
         }
     } catch (error) {
         console.error('Erro ao iniciar o checkout:', error);
-        setLoading(false); 
+        setLoading(false)
     }
 };
 
