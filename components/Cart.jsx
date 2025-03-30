@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../css/Title.module.css';
 import { Trash2, MinusCircle, PlusCircle } from 'lucide-react';
 import { useCart } from '../components/Context/CartContext';
+import handleCheckout from '../services/StripeChekout';
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity } = useCart();
@@ -49,6 +50,15 @@ function Cart() {
         <div className={styles.cart_total}>
           <h3>Total: ${total}</h3>
         </div>
+        <button
+          onClick={() => {
+            console.log("Cart antes do checkout:", cart); // Verifica se os dados estão corretos
+            handleCheckout(cart);
+          }}
+          className={styles.checkout_button}
+        >
+          Finalizar compra
+        </button>
       </div>
     </div>
   );

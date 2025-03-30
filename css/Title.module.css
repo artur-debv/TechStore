@@ -152,3 +152,25 @@
 .cart_total{
     margin: 0 auto;
 }
+
+.checkout_button{
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+}
+
+.checkout_button:hover{
+    background-color: #e0e9e2;
+    color: black;
+}
