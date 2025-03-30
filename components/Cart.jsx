@@ -58,7 +58,7 @@ function Cart() {
           }}
           className={styles.checkout_button}
         >
-          {loading ? 'Loading...' : 'Finalizar compra'}
+          {loading ? 'Processando' : 'Finalizar compra'}
         </button>
       </div>
     </div>
