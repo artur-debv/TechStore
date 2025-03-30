@@ -2,13 +2,31 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../services/FirebaseConfig";
 import styles from '../css/Login.module.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [signInWithEmailAndPassword, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [unsubscribe, setUnsubscribe] = useState(null);
+
+    
+
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("User is logged in:", user);
+            } else {
+                console.log("No user is logged in.");
+            }
+        });
+
+        return () => unsubscribe(); // Cleanup subscription on unmount
+    }, []);
+
     const navigate = useNavigate();
+
 
     async function handleSignIn(e) {
         e.preventDefault();

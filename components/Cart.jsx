@@ -4,13 +4,15 @@ import { Trash2, MinusCircle, PlusCircle } from 'lucide-react';
 import { useCart } from '../components/Context/CartContext';
 import handleCheckout from '../services/StripeChekout';
 import { useState } from 'react';
+import { useAuth } from '../services/ChekedForLogin';
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  const { user, unsubscribe } = useAuth();
   const [loading, setLoading] = useState()
   const isEmpty = cart.length === 0;
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
+  
   return (
     <div className={styles.container}>
       <div className={styles.cart_content}>
@@ -54,7 +56,7 @@ function Cart() {
         </div>
         <button
           onClick={() => {
-            handleCheckout(cart, setLoading);
+            handleCheckout(cart, setLoading, user, unsubscribe);
           }}
           className={styles.checkout_button}
         >

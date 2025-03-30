@@ -1,9 +1,16 @@
 import axios from 'axios';
 
 
-const handleCheckout = async (cart,setLoading) => { // <- Apenas cart, sem destructuring
+const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, sem destructuring
     console.log("Iniciando checkout com os itens:", cart); // Adicionei um log para verificar os itens do carrinho
     setLoading(true)
+    if (user === null) {
+        alert("Você precisa estar logado para finalizar a compra")
+        setLoading(false)
+        return
+    } else {
+        alert("Você já está logado")
+    }
     try {
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
