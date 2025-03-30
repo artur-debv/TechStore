@@ -5,8 +5,11 @@ const handleCheckout = async (cart) => { // <- Apenas cart, sem destructuring
     try {
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
+                name: item.name,
                 id: item.id,
                 quantity: item.quantity,
+                price: item.price,
+                image: item.image,
             })),
         }, {
             headers: {
