@@ -3,9 +3,11 @@ import styles from '../css/Title.module.css';
 import { Trash2, MinusCircle, PlusCircle } from 'lucide-react';
 import { useCart } from '../components/Context/CartContext';
 import handleCheckout from '../services/StripeChekout';
+import { useState } from 'react';
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity } = useCart();
+  const [loading, setLoading] = useState(false); 
   const isEmpty = cart.length === 0;
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -52,12 +54,11 @@ function Cart() {
         </div>
         <button
           onClick={() => {
-            console.log("Cart antes do checkout:", cart); // Verifica se os dados estão corretos
             handleCheckout(cart);
           }}
           className={styles.checkout_button}
         >
-          Finalizar compra
+          {loading ? 'Loading...' : 'Finalizar compra'}
         </button>
       </div>
     </div>
