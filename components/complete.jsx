@@ -8,7 +8,7 @@ const Complete = () => {
 
   useEffect(() => {
     if (sessionId) {
-      fetch(`http://localhost:3000/complete?session_id=${sessionId}`)
+      fetch(`https://stripe-fwqc.onrender.com/complete?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => setSession(data))
         .catch((err) => console.error("Erro ao buscar sessão:", err));

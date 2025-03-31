@@ -33,7 +33,6 @@ function AppRoutes() {
               <div>
                 <Header />
                 <HomePage />
-                <Complete/>
               </div>
               <h1 className={styles.title_products}>Produtos</h1>
               <div>
