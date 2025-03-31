@@ -9,7 +9,7 @@ const Complete = () => {
   useEffect(() => {
     if (sessionId) {
       fetch(`https://stripe-fwqc.onrender.com/complete?session_id=${sessionId}`)
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then((data) => setSession(data))
         .catch((err) => console.error("Erro ao buscar sessão:", err));
     }
