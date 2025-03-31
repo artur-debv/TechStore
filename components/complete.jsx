@@ -25,7 +25,7 @@ const Complete = () => {
 
   setTimeout(() => {
     window.location.href = "/"; // Redireciona para a página inicial após 5 segundos
-  }, 5000); // 5 segundos)
+  }, 4000); // 5 segundos)
 
   return (
     <div
