@@ -6,6 +6,9 @@ const Complete = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
+  console.log(session.payment_status)
+
+
   useEffect(() => {
     if (sessionId) {
       console.log("ID da sessão:", sessionId);
@@ -13,6 +16,7 @@ const Complete = () => {
       fetch(`https://stripe-fwqc.onrender.com/complete?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => 
+          console.log("Dados da sessão:", data) ||
           setSession(data)
       )
         .catch((err) => console.error("Erro ao buscar sessão:", err));
@@ -25,7 +29,7 @@ const Complete = () => {
     <div>
       <h1>Pagamento Confirmado!</h1>
       <p>ID da sessão: {sessionId}</p>
-      <p>Status: {session.payment_status}</p>
+      <p>Status: {session.paymentStatus}</p>
     </div>
   );
 };
