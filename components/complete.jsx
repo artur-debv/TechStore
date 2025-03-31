@@ -12,7 +12,9 @@ const Complete = () => {
       console.log("Status da sessão:", sessionId.payment_status);
       fetch(`https://stripe-fwqc.onrender.com/complete?session_id=${sessionId}`)
         .then((res) => res.json())
-        .then((data) => setSession(data))
+        .then((data) => 
+          setSession(data)
+      )
         .catch((err) => console.error("Erro ao buscar sessão:", err));
     }
   }, [sessionId]);
@@ -23,7 +25,7 @@ const Complete = () => {
     <div>
       <h1>Pagamento Confirmado!</h1>
       <p>ID da sessão: {sessionId}</p>
-      <p>Status: {sessionId.payment_status}</p>
+      <p>Status: {session.payment_status}</p>
     </div>
   );
 };
