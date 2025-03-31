@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import ProductList from "../components/ProductList";
 import Cart from "../components/Cart";
 import styles from '../css/App.module.css';
+import Complete from "../components/complete";
 
 
 
@@ -24,6 +25,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/complete" element={<Complete />} />
         <Route
           path="/"
           element={
@@ -31,6 +33,7 @@ function AppRoutes() {
               <div>
                 <Header />
                 <HomePage />
+                <Complete/>
               </div>
               <h1 className={styles.title_products}>Produtos</h1>
               <div>
