@@ -21,7 +21,7 @@ const Complete = () => {
   return (
     <div>
       <h1>Pagamento Confirmado!</h1>
-      <p>ID da sessão: {session.id}</p>
+      <p>ID da sessão: {sessionId}</p>
       <p>Status: {session.payment_status}</p>
     </div>
   );
