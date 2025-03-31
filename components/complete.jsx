@@ -8,7 +8,8 @@ const Complete = () => {
 
   useEffect(() => {
     if (sessionId) {
-      console.log("ID da sessão:", sessionId); // Adicionei um log para verificar o ID da sessão
+      console.log("ID da sessão:", sessionId);
+      console.log("Status da sessão:", sessionId.payment_status);
       fetch(`https://stripe-fwqc.onrender.com/complete?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => setSession(data))
