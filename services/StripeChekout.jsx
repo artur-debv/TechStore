@@ -16,13 +16,15 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
     }
     
     try {
+        console.log("Iniciando o checkout..."); // Adicionei um log para verificar o início do checkout
+        console.log("Itens do carrinho:", ); // Adicionei um log para verificar os itens do carrinho
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
                 name: item.name,
                 id: item.id,
                 quantity: item.quantity,
                 price: item.price,
-                image: item.image,
+                images: [item.images],
             })),
         }, {
             headers: {
@@ -39,6 +41,7 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
         console.error('Erro ao iniciar o checkout:', error);
         setLoading(false)
     }
+    
 };
 
 export default handleCheckout;
