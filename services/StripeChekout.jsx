@@ -14,6 +14,7 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
         setLoading(false)
         return
     }
+    
     try {
         const response = await axios.post('https://stripe-fwqc.onrender.com/checkout', {
             items: cart.map(item => ({
@@ -21,7 +22,7 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
                 id: item.id,
                 quantity: item.quantity,
                 price: item.price,
-                image: item.image,
+                image: item.images,
             })),
         }, {
             headers: {
