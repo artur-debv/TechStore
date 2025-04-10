@@ -24,7 +24,7 @@ const handleCheckout = async (cart, setLoading, user) => { // <- Apenas cart, se
                 id: item.id,
                 quantity: item.quantity,
                 price: item.price,
-                images: [item.images],
+                images: [item.image],
             })),
         }, {
             headers: {
